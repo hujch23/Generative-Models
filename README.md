@@ -8,3 +8,7 @@
 - [VAE](#VAE)
 - [Difussion](#Difussion)
 - [Autoregressive](#Autoregressive)
+- [Chatgpt](#Chatgpt)
+- [Bert](#Bert)
+- [VLA](#VLA)
+- [Deepseek](#Deepseek)
