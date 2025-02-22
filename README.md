@@ -111,11 +111,6 @@ def train_neuron(features, labels, initial_weights, initial_bias, learning_rate,
 
     return updated_weight.tolist(), updated_bias, mse_value
 
-
-
-
-
-
 if __name__ == "__main__":
     features = np.array(eval(input()))
     labels = np.array(eval(input()))
