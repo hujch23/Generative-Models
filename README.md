@@ -182,6 +182,7 @@ if __name__ == "__main__":
     print(kl_divergence_normal(mu_p, sigma_p, mu_q, sigma_q))
 ```
 
+### 1.6 优化算法
 
 
 
