@@ -79,3 +79,19 @@ if __name__ == "__main__":
     bias = float(input())
     print(single_neuron_model(features, labels, weights, bias))
 ```
+## 1.4 Log Softmax函数的实现
+
+```python
+import numpy as np
+
+
+def log_softmax(scores: list) -> np.ndarray:
+    scores = scores - np.max(scores)
+    prob = scores - np.log(np.sum(np.exp(scores)))
+
+    return prob
+
+if __name__ == "__main__":
+    scores = eval(input())
+    print(log_softmax(scores))
+```
