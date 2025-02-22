@@ -50,7 +50,7 @@ if __name__ == "__main__":
     print(softmax(scores))
 ```
 
-## 1.3 单神经元
+## 1.3 （具有反向传播）单神经元
 使用基础Python语法,没有依赖NumPy等库，通过循环逐个处理样本
 
 ```python 
@@ -69,7 +69,9 @@ def single_neuron_model(features, labels, weights, bias):
     mse = round(sum((prob - label)**2 for prob, label in zip(probabilities, labels)) / len(labels), 4)
     
     return probabilities, mse 
-    
+
+如果涉及反向传播：
+
 
 
 if __name__ == "__main__":
