@@ -184,6 +184,17 @@ if __name__ == "__main__":
 
 ### 1.6 优化算法
 
+**三怕**：局部极小值、鞍点、梯度消失
+![image](https://github.com/user-attachments/assets/d397c91a-8037-48b2-a4cd-5746ad8cecaa)
+![image](https://github.com/user-attachments/assets/927b7fc2-6a24-43bd-a62a-5ea02729dfb7)
+![image](https://github.com/user-attachments/assets/5fdff66e-8fee-47ec-b985-4c767ac883f8)
+![image](https://github.com/user-attachments/assets/dadc7dd9-1d0e-4911-bd19-c9c707aa212e)
+![image](https://github.com/user-attachments/assets/bb1e90d6-e3d5-4d18-99bc-1cbfdd48d89f)
+![image](https://github.com/user-attachments/assets/3fa80ab1-596a-4987-b5a7-afcb8e291430)
+![image](https://github.com/user-attachments/assets/5841d2d8-4306-43a4-b129-fc72f92edf57)
+![image](https://github.com/user-attachments/assets/46ca7274-a82c-4671-ba39-58d3690df9f5)
+
+
 
 
 
