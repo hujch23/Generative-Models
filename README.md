@@ -83,6 +83,49 @@ if __name__ == "__main__":
 
 ```python
 
+import numpy as np
+
+def sigmoid(x):
+    return 1 / (1 + np.exp(-x))
+
+def train_neuron(features, labels, initial_weights, initial_bias, learning_rate, epochs):
+    features = np.array(features)
+    labels = np.array(labels)
+    weight = np.array(initial_weights)
+    bias = initial_bias
+    mse_value = []
+    for _ in range(epochs):
+        z = np.dot(features, weight) + bias
+        prob = sigmoid(z)
+
+        mse = np.mean((prob - labels)**2)
+        mse_value.append(round(mse, 4))
+
+        weight_gradient = (2 / len(labels)) * np.dot(features.T, (prob - labels) * (prob * (1 - prob))) 
+        bias_gradient = (2 / len(labels)) * np.sum((prob - labels)*(prob * (1 - prob)))
+
+        weight -= learning_rate * weight_gradient
+        bias -= learning_rate * bias_gradient
+        updated_weight = np.round(weight, 4)
+        updated_bias = round(bias, 4)
+
+    return updated_weight.tolist(), updated_bias, mse_value
+
+
+
+
+
+
+if __name__ == "__main__":
+    features = np.array(eval(input()))
+    labels = np.array(eval(input()))
+    initial_weights = np.array(eval(input()))
+    initial_bias = float(input())
+    learning_rate = float(input())
+    epochs = int(input())
+    print(train_neuron(features, labels, initial_weights, initial_bias, learning_rate, epochs))
+
+
 ```
 
 ## 1.4 Log Softmax函数的实现
