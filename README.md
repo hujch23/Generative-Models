@@ -70,6 +70,22 @@ def single_neuron_model(features, labels, weights, bias):
     
     return probabilities, mse
 
+def single_neuron_model(features, labels, weights, bias):
+    
+    features = np.array(features)
+    labels = np.array(labels)
+    weights = np.array(weights)
+
+    z = np.dot(features, weights) + bias
+    prob = 1 / (1 + np.exp(-z))
+    probabilities = np.round(prob, 4).tolist()
+    mse = np.round(np.mean((prob - labels)**2), 4)
+
+
+    
+    return probabilities, mse
+
+
 if __name__ == "__main__":
     features = np.array(eval(input()))
     labels = np.array(eval(input()))
