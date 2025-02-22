@@ -15,7 +15,8 @@
 - [Deepseek](#Deepseek)
 
 ## 1.1 Sigmoid 激活函数实现
-f(x) = 1 / (1 + e^(-x))
+![image](https://github.com/user-attachments/assets/02cf363d-cd7a-4203-8dbb-3833bcc96ff8)
+
 
 ```python 
 import math
@@ -30,11 +31,12 @@ if __name__ == "__main__":
 ```
 
 ## 1.2 Softmax 激活函数实现
-![image](https://github.com/user-attachments/assets/f3486876-2c98-42ea-b977-63b0011a291b)
+![image](https://github.com/user-attachments/assets/e8799da9-e3db-4f16-a563-ae2a86a4b3c8)
+
+```python 
 import numpy as np
 import math
 
-```python 
 def softmax(scores: list[float]) -> list[float]:
     exp_scores = [math.exp(score) for score in scores]
     sum_exp_scores = sum(exp_scores)
