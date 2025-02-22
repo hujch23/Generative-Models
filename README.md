@@ -2,13 +2,16 @@
 
 ## 📚 目录
 
-- [深度学习基础](#深度学习基础)  
-- [CNN](#CNN)  
-- [RNN](#RNN)
-- [Transformer](#Transformer)
-- [VAE](#VAE)
-- [Difussion](#Difussion)
-- [Autoregressive](#Autoregressive)
+- [深度学习基础概念](#深度学习基础概念)
+- [深度学习三种架构](#深度学习三种架构)
+  - [CNN](#CNN)  
+  - [RNN](#RNN)
+  - [Transformer](#Transformer)
+- [生成模型技术路线](#生成模型技术路线)
+  - [VAE](#VAE)
+  - [GAN](#GAN)
+  - [Difussion](#Difussion)
+  - [Autoregressive](#Autoregressive)
 - [Chatgpt](#Chatgpt)
 - [Bert](#Bert)
 - [VLA](#VLA)
