@@ -95,3 +95,11 @@ if __name__ == "__main__":
     scores = eval(input())
     print(log_softmax(scores))
 ```
+
+## 1.5 熵、KL散度、交叉熵
+![image](https://github.com/user-attachments/assets/959bf521-4046-49c5-a024-99795f02a0b4)
+![image](https://github.com/user-attachments/assets/50982527-7e33-4b32-ac8f-b1af5feee25e)
+![image](https://github.com/user-attachments/assets/407066ad-2417-4b42-9bd2-fab20df13679)
+
+
+
