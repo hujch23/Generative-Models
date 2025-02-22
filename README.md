@@ -101,5 +101,27 @@ if __name__ == "__main__":
 ![image](https://github.com/user-attachments/assets/50982527-7e33-4b32-ac8f-b1af5feee25e)
 ![image](https://github.com/user-attachments/assets/407066ad-2417-4b42-9bd2-fab20df13679)
 
+![image](https://github.com/user-attachments/assets/47c379dc-f7bf-44de-9fb2-7c222a95cded)
+
+```python
+import numpy as np
+
+def kl_divergence_normal(mu_p, sigma_p, mu_q, sigma_q):
+    kl_1 = np.log(sigma_q / sigma_p)
+    kl_2 = (sigma_p**2 + (mu_p - mu_q)**2)/ (2*sigma_q**2)
+
+    kl_div = kl_1 + kl_2 - 0.5
+    return kl_div
+
+
+if __name__ == "__main__":
+    mu_p, sigma_p, mu_q, sigma_q = map(float, input().split())
+    print(kl_divergence_normal(mu_p, sigma_p, mu_q, sigma_q))
+```
+
+
+
+
+
 
 
