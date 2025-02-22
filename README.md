@@ -49,3 +49,33 @@ if __name__ == "__main__":
     scores = np.array(eval(input()))
     print(softmax(scores))
 ```
+
+## 1.3 单神经元
+使用基础Python语法,没有依赖NumPy等库，通过循环逐个处理样本
+
+```python 
+import math
+import numpy as np
+def single_neuron_model(features, labels, weights, bias):
+    
+    probabilities = []
+
+    for cur_feature in features:
+
+        z = sum(weight * feature for weight, feature in zip(weights, cur_feature)) + bias
+        prob = 1 / (1 + math.exp(-z))
+        probabilities.append(round(prob, 4))
+
+    mse = round(sum((prob - label)**2 for prob, label in zip(probabilities, labels)) / len(labels), 4)
+    
+    return probabilities, mse 
+    
+
+
+if __name__ == "__main__":
+    features = np.array(eval(input()))
+    labels = np.array(eval(input()))
+    weights = np.array(eval(input()))
+    bias = float(input())
+    print(single_neuron_model(features, labels, weights, bias))
+```
