@@ -68,11 +68,7 @@ def single_neuron_model(features, labels, weights, bias):
 
     mse = round(sum((prob - label)**2 for prob, label in zip(probabilities, labels)) / len(labels), 4)
     
-    return probabilities, mse 
-
-如果涉及反向传播：
-
-
+    return probabilities, mse
 
 if __name__ == "__main__":
     features = np.array(eval(input()))
@@ -81,6 +77,15 @@ if __name__ == "__main__":
     bias = float(input())
     print(single_neuron_model(features, labels, weights, bias))
 ```
+
+如果涉及反向传播：
+![image](https://github.com/user-attachments/assets/aee3becc-c8a1-4184-bc17-2fbd6d4f9d23)
+![image](https://github.com/user-attachments/assets/e39c7330-1ccb-4717-a651-85095681d5f7)
+
+```python
+
+```
+
 ## 1.4 Log Softmax函数的实现
 
 ```python
