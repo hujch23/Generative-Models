@@ -14,7 +14,7 @@
 - [VLA](#VLA)
 - [Deepseek](#Deepseek)
 
-## Sigmoid 激活函数实现
+## 1.1 Sigmoid 激活函数实现
 f(x) = 1 / (1 + e^(-x))
 
 ```python 
@@ -27,4 +27,23 @@ def sigmoid(z: float) -> float:
 if __name__ == "__main__":
     z = float(input())
     print(f"{sigmoid(z):.4f}")
+```
+
+## 1.2 Softmax 激活函数实现
+![image](https://github.com/user-attachments/assets/f3486876-2c98-42ea-b977-63b0011a291b)
+import numpy as np
+import math
+
+```python 
+def softmax(scores: list[float]) -> list[float]:
+    exp_scores = [math.exp(score) for score in scores]
+    sum_exp_scores = sum(exp_scores)
+
+    probabilities = [round(score / sum_exp_scores, 4) for score in exp_scores]
+    
+    return probabilities
+
+if __name__ == "__main__":
+    scores = np.array(eval(input()))
+    print(softmax(scores))
 ```
