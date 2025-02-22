@@ -79,8 +79,7 @@ if __name__ == "__main__":
 ```
 
 如果涉及反向传播：
-![image](https://github.com/user-attachments/assets/aee3becc-c8a1-4184-bc17-2fbd6d4f9d23)
-![image](https://github.com/user-attachments/assets/e39c7330-1ccb-4717-a651-85095681d5f7)
+![image](https://github.com/user-attachments/assets/b5d437c7-ea03-46b6-bf9d-4fb56d6e63db)
 
 ```python
 
