@@ -2,7 +2,7 @@
 
 ## 📚 目录
 
-- [手撕代码](#手撕代码)  
+- [深度学习基础](#深度学习基础)  
 - [CNN](#CNN)  
 - [RNN](#RNN)
 - [Transformer](#Transformer)
