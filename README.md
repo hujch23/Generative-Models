@@ -17,7 +17,7 @@
 - [VLA](#VLA)
 - [Deepseek](#Deepseek)
 
-## 1.1 Sigmoid 激活函数实现
+### 1.1 Sigmoid 激活函数实现
 ![image](https://github.com/user-attachments/assets/02cf363d-cd7a-4203-8dbb-3833bcc96ff8)
 
 
@@ -33,7 +33,7 @@ if __name__ == "__main__":
     print(f"{sigmoid(z):.4f}")
 ```
 
-## 1.2 Softmax 激活函数实现
+### 1.2 Softmax 激活函数实现
 ![image](https://github.com/user-attachments/assets/e8799da9-e3db-4f16-a563-ae2a86a4b3c8)
 
 ```python 
@@ -53,7 +53,7 @@ if __name__ == "__main__":
     print(softmax(scores))
 ```
 
-## 1.3 （具有反向传播）单神经元
+### 1.3 （具有反向传播）单神经元
 使用基础Python语法,没有依赖NumPy等库，通过循环逐个处理样本
 
 ```python 
@@ -142,7 +142,7 @@ if __name__ == "__main__":
 
 ```
 
-## 1.4 Log Softmax函数的实现
+### 1.4 Log Softmax函数的实现
 
 ```python
 import numpy as np
@@ -159,7 +159,7 @@ if __name__ == "__main__":
     print(log_softmax(scores))
 ```
 
-## 1.5 熵、KL散度、交叉熵
+### 1.5 熵、KL散度、交叉熵
 ![image](https://github.com/user-attachments/assets/959bf521-4046-49c5-a024-99795f02a0b4)
 ![image](https://github.com/user-attachments/assets/50982527-7e33-4b32-ac8f-b1af5feee25e)
 ![image](https://github.com/user-attachments/assets/407066ad-2417-4b42-9bd2-fab20df13679)
