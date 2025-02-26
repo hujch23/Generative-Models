@@ -199,7 +199,27 @@ if __name__ == "__main__":
 ## Transformer 面试
 - [Transformer1](https://zhuanlan.zhihu.com/p/438625445)  
 - [Transformer2](https://zhuanlan.zhihu.com/p/363466672)  
-- [Transformer3](https://zhuanlan.zhihu.com/p/148656446) 
+- [Transformer3](https://zhuanlan.zhihu.com/p/148656446)
+
+
+### VAE及其变种
+
+VAE学习将输入数据编码到一个连续的潜在空间，这个空间近似标准正态分布，然后可以从这个潜在空间采样并通过解码器生成符合原始数据分布的新样本
+![image](https://github.com/user-attachments/assets/4ba95eea-c9ab-4a89-af81-7793c2d8bca2)
+![image](https://github.com/user-attachments/assets/e508c84a-27a4-4554-a365-b98fe78d864d)
+![image](https://github.com/user-attachments/assets/7d2cafd5-2876-4597-a300-f4dccd5deec5)
+![image](https://github.com/user-attachments/assets/916f93e3-44a0-4ca3-a019-43395099035f)
+![image](https://github.com/user-attachments/assets/9c022246-b226-44d0-ac83-b662b0990dd6)
+
+
+
+
+
+
+变种1：CVAE
+变种2：DVAE
+变种3：βVAE
+
 
 
 
