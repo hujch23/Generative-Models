@@ -12,10 +12,8 @@
   - [GAN](#GAN)
   - [Difussion](#Difussion)
   - [Autoregressive](#Autoregressive)
-- [Chatgpt](#Chatgpt)
-- [Bert](#Bert)
-- [VLA](#VLA)
-- [Deepseek](#Deepseek)
+- [Sora技术原理](#Sora技术原理)
+
 
 ### 1.1 Sigmoid 激活函数实现
 ![image](https://github.com/user-attachments/assets/02cf363d-cd7a-4203-8dbb-3833bcc96ff8)
