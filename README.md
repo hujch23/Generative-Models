@@ -621,7 +621,7 @@ class LayerNorm(nn.Module):
 
 ## Diffusion Model 推导
 
-见论文：Understanding Diffusion Models: A Unified Perspective
+见论文：[Understanding Diffusion Models: A Unified Perspective](https://arxiv.org/abs/2208.11970)
 
 ## Diffusion Policy 推导
 
