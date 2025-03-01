@@ -1,4 +1,4 @@
-# Generative-Models
+# 🧸 Generative-Models
 
 ## 📚 目录
 
@@ -15,7 +15,7 @@
 - [Sora技术原理](#Sora技术原理)
 
 
-### 1.1 Sigmoid 激活函数实现
+###  1.1 Sigmoid 激活函数实现
 ![image](https://github.com/user-attachments/assets/02cf363d-cd7a-4203-8dbb-3833bcc96ff8)
 
 
@@ -221,7 +221,7 @@ L1 和 L2 正则化是两种常用的正则化方法，用于防止模型过拟�
 - L1 正则化：在损失函数中添加权重的绝对值之和，促使权重稀疏化（即部分权重变为零），适合特征选择，适用于高维稀疏数据
 - L2 正则化：在损失函数中添加权重的平方和，促使权重趋向于较小的值，但不会完全为零
 
-## CNN手撕及面试
+## 🛰️ CNN手撕及面试
 ### 1. 什么是卷积神经网络（CNN）？它与普通神经网络有何不同？
 
 与普通神经网络（如全连接网络）不同，CNN利用了图像的局部相关性和参数共享，减少了参数数量，提高了训练效率。
@@ -319,7 +319,7 @@ def simple_conv2d(input_matrix: np.ndarray, kernel: np.ndarray, padding: int, st
     return output_matrix
 ```
 
-## RNN手撕及面试
+## 🏆 RNN手撕及面试
 ![image](https://github.com/user-attachments/assets/83395ace-d874-447b-8cb1-2e7f0494f93f)
 ![image](https://github.com/user-attachments/assets/9f687b18-034f-4b78-9112-c618e62888d5)
 ![image](https://github.com/user-attachments/assets/b3ae7939-2bcb-423e-9c00-7e78cdb1d987)
@@ -432,7 +432,7 @@ class LSTM:
 ```
 
 
-## Transformer手撕及面试
+## 🙌 Transformer手撕及面试
 - [Transformer1](https://zhuanlan.zhihu.com/p/438625445)  
 - [Transformer2](https://zhuanlan.zhihu.com/p/363466672)  
 - [Transformer3](https://zhuanlan.zhihu.com/p/148656446)
@@ -602,7 +602,7 @@ class LayerNorm(nn.Module):
         return out
 ```
 
-## VAE变分自编码器推导
+## 🎯 VAE变分自编码器推导
 
 - AE：Autoencoder是一种自监督的神经网络，用于学习数据的高效表示。其主要目标是通过压缩数据并尝试重构它来捕捉数据的关键特征由于Autoencoder（自编码器）学习的是恒等函数，当网络的参数数量超过数据本身的复杂度时，存在过拟合的风险。
 - VAE：在VAE中，输入数据被映射到一个潜在的隐向量的分布上，这个分布通常假设为正态分布，其参数由输入数据决定。因此，VAE的关键在于学习输入数据的概率分布特性，而不仅仅是确定性的映射关系。（因为采样的参数和网络参数绑定在一起，因此需要重参数化技巧，通俗点就是神经网络输出近似后验分布的均值和方差）
@@ -613,16 +613,16 @@ class LayerNorm(nn.Module):
 ![image](https://github.com/user-attachments/assets/916f93e3-44a0-4ca3-a019-43395099035f)
 ![image](https://github.com/user-attachments/assets/9c022246-b226-44d0-ac83-b662b0990dd6)
 
-## GAN生成对抗网络推导
+## 🏂 GAN生成对抗网络推导
 ![image](https://github.com/user-attachments/assets/8d384490-5f9c-4ad5-b4c8-f2b5171da1a8)
 ![image](https://github.com/user-attachments/assets/5ec9bee4-2e65-404e-81d5-1b2f477c14dc)
 ![image](https://github.com/user-attachments/assets/dc3e5455-22ab-4273-96a2-a2a2b2988f10)
 ![image](https://github.com/user-attachments/assets/3fe144f3-5199-43aa-9bd9-6216687072bf)
 
-## Diffusion Model 推导
+## 🔬 Diffusion Model 推导
 
 见论文：[Understanding Diffusion Models: A Unified Perspective](https://arxiv.org/abs/2208.11970)
 
-## Diffusion Policy 推导
+## 📑 Diffusion Policy 推导
 
 
