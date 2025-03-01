@@ -341,53 +341,96 @@ def rnn_forward(input_sequence, initial_hidden_state, Wx, Wh, b):
     return final_hidden_state.tolist()
 ```
 ```python
-class LSTM:
-    def __init__(self, input_size, hidden_size):
-        self.input_size = input_size
-        self.hidden_size = hidden_size
+class LSTM:  
+    def __init__(self, input_size, hidden_size):  
+        """  
+        初始化 LSTM 的权重和偏置。  
 
-        # Initialize weights and biases
-        self.Wf = np.random.randn(hidden_size, input_size + hidden_size)
-        self.Wi = np.random.randn(hidden_size, input_size + hidden_size)
-        self.Wc = np.random.randn(hidden_size, input_size + hidden_size)
-        self.Wo = np.random.randn(hidden_size, input_size + hidden_size)
+        参数：  
+        - input_size: 输入特征的维度。  
+        - hidden_size: 隐藏状态的维度（即 LSTM 单元的数量）。  
+        """  
+        self.input_size = input_size  
+        self.hidden_size = hidden_size  
 
-        self.bf = np.zeros((hidden_size, 1))
-        self.bi = np.zeros((hidden_size, 1))
-        self.bc = np.zeros((hidden_size, 1))
-        self.bo = np.zeros((hidden_size, 1))
+        # 初始化遗忘门 (Forget Gate) 的权重和偏置  
+        self.Wf = np.random.randn(hidden_size, input_size + hidden_size)  # 遗忘门的权重矩阵  
+        self.bf = np.zeros((hidden_size, 1))  # 遗忘门的偏置  
 
-    def forward(self, x, initial_hidden_state, initial_cell_state):
-        h = initial_hidden_state
-        c = initial_cell_state
-        outputs = []
+        # 初始化输入门 (Input Gate) 的权重和偏置  
+        self.Wi = np.random.randn(hidden_size, input_size + hidden_size)  # 输入门的权重矩阵  
+        self.bi = np.zeros((hidden_size, 1))  # 输入门的偏置  
 
-        for t in range(len(x)):
-            xt = x[t].reshape(-1, 1)
-            concat = np.vstack((h, xt))
+        # 初始化候选记忆单元 (Candidate Cell State) 的权重和偏置  
+        self.Wc = np.random.randn(hidden_size, input_size + hidden_size)  # 候选记忆单元的权重矩阵  
+        self.bc = np.zeros((hidden_size, 1))  # 候选记忆单元的偏置  
 
-            # Forget gate
-            ft = self.sigmoid(np.dot(self.Wf, concat) + self.bf)
+        # 初始化输出门 (Output Gate) 的权重和偏置  
+        self.Wo = np.random.randn(hidden_size, input_size + hidden_size)  # 输出门的权重矩阵  
+        self.bo = np.zeros((hidden_size, 1))  # 输出门的偏置  
 
-            # Input gate
-            it = self.sigmoid(np.dot(self.Wi, concat) + self.bi)
-            c_tilde = np.tanh(np.dot(self.Wc, concat) + self.bc)
+    def forward(self, x, initial_hidden_state, initial_cell_state):  
+        """  
+        前向传播，计算 LSTM 的输出。  
 
-            # Cell state update
-            c = ft * c + it * c_tilde
+        参数：  
+        - x: 输入序列，形状为 (序列长度, 输入特征维度)。  
+        - initial_hidden_state: 初始隐藏状态，形状为 (hidden_size, 1)。  
+        - initial_cell_state: 初始记忆单元状态，形状为 (hidden_size, 1)。  
 
-            # Output gate
-            ot = self.sigmoid(np.dot(self.Wo, concat) + self.bo)
+        返回：  
+        - outputs: 所有时间步的隐藏状态，形状为 (序列长度, hidden_size, 1)。  
+        - h: 最后一个时间步的隐藏状态。  
+        - c: 最后一个时间步的记忆单元状态。  
+        """  
+        h = initial_hidden_state  # 当前时间步的隐藏状态  
+        c = initial_cell_state  # 当前时间步的记忆单元状态  
+        outputs = []  # 用于存储每个时间步的隐藏状态  
 
-            # Hidden state update
-            h = ot * np.tanh(c)
+        # 遍历输入序列的每个时间步  
+        for t in range(len(x)):  
+            xt = x[t].reshape(-1, 1)  # 当前时间步的输入，形状为 (input_size, 1)  
+            concat = np.vstack((h, xt))  # 将隐藏状态和输入拼接，形状为 (hidden_size + input_size, 1)  
 
-            outputs.append(h)
+            # 遗忘门 (Forget Gate)  
+            # 计算遗忘门的激活值，决定记忆单元中哪些信息需要遗忘  
+            ft = self.sigmoid(np.dot(self.Wf, concat) + self.bf)  
 
-        return np.array(outputs), h, c
+            # 输入门 (Input Gate)  
+            # 计算输入门的激活值，决定当前输入中哪些信息需要写入记忆单元  
+            it = self.sigmoid(np.dot(self.Wi, concat) + self.bi)  
+            # 计算候选记忆单元的值，表示当前时间步的新信息  
+            c_tilde = np.tanh(np.dot(self.Wc, concat) + self.bc)  
 
-    def sigmoid(self, x):
-        return 1 / (1 + np.exp(-x))
+            # 更新记忆单元状态 (Cell State)  
+            # 遗忘门控制遗忘旧信息，输入门控制写入新信息  
+            c = ft * c + it * c_tilde  
+
+            # 输出门 (Output Gate)  
+            # 计算输出门的激活值，决定记忆单元中哪些信息需要输出  
+            ot = self.sigmoid(np.dot(self.Wo, concat) + self.bo)  
+
+            # 更新隐藏状态 (Hidden State)  
+            # 隐藏状态由输出门控制，并结合当前记忆单元的值  
+            h = ot * np.tanh(c)  
+
+            # 将当前时间步的隐藏状态存储到输出列表中  
+            outputs.append(h)  
+
+        # 返回所有时间步的隐藏状态，以及最后一个时间步的隐藏状态和记忆单元状态  
+        return np.array(outputs), h, c  
+
+    def sigmoid(self, x):  
+        """  
+        Sigmoid 激活函数。  
+
+        参数：  
+        - x: 输入值。  
+
+        返回：  
+        - Sigmoid 函数的输出值。  
+        """  
+        return 1 / (1 + np.exp(-x))  
 ```
 
 
