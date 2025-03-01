@@ -217,6 +217,103 @@ def adam_optimizer(f, grad, x0, learning_rate=0.001, beta1=0.9, beta2=0.999, eps
 ## CNN手撕及面试
 
 
+### 1. 什么是卷积神经网络（CNN）？它与普通神经网络有何不同？
+
+与普通神经网络（如全连接网络）不同，CNN利用了图像的局部相关性和参数共享，减少了参数数量，提高了训练效率。
+
+### 2. 什么是卷积操作？为什么需要卷积？
+卷积操作是通过一个小的滤波器（kernel）在输入数据上滑动，计算点积以提取局部特征。卷积的作用是提取局部模式（如边缘、纹理等），并通过层层叠加提取更高层次的特征。
+
+### 3. 什么是池化（Pooling）？有哪些常见的池化方法？
+
+池化是一种下采样操作，用于减少特征图的尺寸，降低计算复杂度，同时保留重要特征。
+常见的池化方法：最大池化（Max Pooling）：取池化窗口中的最大值。平均池化（Average Pooling）：取池化窗口中的平均值
+
+### 4. 什么是填充（Padding）？为什么需要填充？
+填充是在输入数据的边缘添加额外的像素（通常为0），以控制输出特征图的大小。
+作用：保持输出特征图的尺寸（"same" padding）。提高边缘区域的特征提取能力
+
+
+###  5. 什么是参数共享？为什么它对CNN很重要？
+
+参数共享的核心思想是利用图像的平移不变性。同一个卷积核在整个输入特征图上滑动时使用相同的参数。
+
+### 6. CNN的感受野（Receptive Field）是什么？为什么重要？
+
+感受野是指卷积神经网络中某一层的一个神经元在输入图像上对应的区域大小。感受野越大，神经元能够捕获的上下文信息越多。
+深层网络通过叠加卷积层可以扩大感受野，从而提取全局特征
+
+### 7.什么是转置卷积（Transposed Convolution）？它的作用是什么？
+转置卷积是一种上采样操作，用于将低分辨率特征图恢复到高分辨率。
+作用：常用于生成对抗网络（GAN）和图像分割任务中，用于生成高分辨率图像或恢复原始尺寸。
+转置卷积并不是简单的反向卷积，而是通过插值和卷积操作实现上采样。
+
+
+### 8. CNN中常见的网络架构有哪些？
+- AlexNet：引入ReLU、Dropout和数据增强，赢得ImageNet比赛。
+- VGG：使用小卷积核（3x3）堆叠，结构简单但参数量大。
+- GoogLeNet（Inception）：引入Inception模块，减少计算量。在同一层中并行使用不同大小的卷积核（如1×1、3×3、5×5）和池化操作。通过多尺度特征提取，捕获不同大小的特征。
+- ResNet：引入残差连接（skip connection），解决深层网络的梯度消失问题。残差的核心思想是：让网络学习输入与输出之间的差值（残差），而不是直接学习输出本身。残差连接使得网络更容易学习到恒等映射或接近恒等映射的函数。
+即使增加了网络深度，新的层可以选择学习“零映射”（即不改变输入），从而避免退化问题。
+- 现代架构如EfficientNet（同时调整网络的深度、宽度和分辨率，找到最优的缩放比例）、MobileNet（将标准卷积分解为深度卷积（Depthwise Convolution）和逐点卷积（Pointwise Convolution））等，注重参数效率和计算效率
+
+### 9. CNN的常见问题及解决方法
+问题1：过拟合：数据增强（如翻转、旋转、裁剪）。正则化（如L2正则化、Dropout）。
+问题2：梯度消失或梯度爆炸：使用ReLU激活函数。使用残差网络（ResNet）或批归一化（Batch Normalization）。
+
+### 10. 手撕二维卷积
+```python
+import numpy as np  
+
+def simple_conv2d(input_matrix: np.ndarray, kernel: np.ndarray, padding: int, stride: int):  
+    """  
+    实现一个简单的2D卷积操作。  
+
+    参数：  
+    - input_matrix: 输入矩阵（二维数组），表示输入的图像或特征图。  
+    - kernel: 卷积核（二维数组），用于提取特征。  
+    - padding: 填充大小，在输入矩阵的边缘添加的零的数量。  
+    - stride: 步幅，卷积核在输入矩阵上滑动的步长。  
+
+    返回：  
+    - output_matrix: 输出矩阵（二维数组），表示卷积操作后的特征图。  
+    """  
+    # 获取输入矩阵的高度和宽度  
+    input_height, input_width = input_matrix.shape  
+
+    # 获取卷积核的高度和宽度  
+    kernel_height, kernel_width = kernel.shape  
+
+    # 对输入矩阵进行填充，填充模式为常数（值为0）  
+    # 填充的大小为 (padding, padding) 在高度和宽度方向上分别添加  
+    padded_input = np.pad(input_matrix, ((padding, padding), (padding, padding)), mode='constant')  
+
+    # 获取填充后的输入矩阵的高度和宽度  
+    input_height_padded, input_width_padded = padded_input.shape  
+
+    # 计算输出矩阵的高度和宽度  
+    # 输出尺寸公式：((输入尺寸 + 2*填充 - 卷积核尺寸) // 步幅) + 1  
+    output_height = (input_height_padded - kernel_height) // stride + 1  
+    output_width = (input_width_padded - kernel_width) // stride + 1  
+
+    # 初始化输出矩阵，大小为 (output_height, output_width)，初始值为0  
+    output_matrix = np.zeros((output_height, output_width))  
+
+    # 遍历输出矩阵的每个位置  
+    for i in range(output_height):  # 遍历输出矩阵的行  
+        for j in range(output_width):  # 遍历输出矩阵的列  
+            # 提取输入矩阵中与当前卷积核位置对应的区域  
+            # 区域的起始位置由 (i*stride, j*stride) 决定  
+            # 区域的大小与卷积核相同  
+            region = padded_input[i*stride:i*stride + kernel_height, j*stride:j*stride + kernel_width]  
+            
+            # 计算区域与卷积核的逐元素乘积的和，并赋值给输出矩阵的当前位置  
+            output_matrix[i, j] = np.sum(region * kernel)  
+
+    # 返回卷积操作后的输出矩阵  
+    return output_matrix
+```
+
 ## RNN手撕及面试
 
 ## Transformer手撕及面试
