@@ -196,13 +196,18 @@ if __name__ == "__main__":
 ![image](https://github.com/user-attachments/assets/46ca7274-a82c-4671-ba39-58d3690df9f5)
 
 
-## Transformer 面试
+## CNN手撕及面试
+
+
+## RNN手撕及面试
+
+## Transformer手撕及面试
 - [Transformer1](https://zhuanlan.zhihu.com/p/438625445)  
 - [Transformer2](https://zhuanlan.zhihu.com/p/363466672)  
 - [Transformer3](https://zhuanlan.zhihu.com/p/148656446)
 
 
-### VAE及其变种
+## VAE变分自编码器推导
 
 VAE学习将输入数据编码到一个连续的潜在空间，这个空间近似标准正态分布，然后可以从这个潜在空间采样并通过解码器生成符合原始数据分布的新样本
 ![image](https://github.com/user-attachments/assets/4ba95eea-c9ab-4a89-af81-7793c2d8bca2)
@@ -212,16 +217,12 @@ VAE学习将输入数据编码到一个连续的潜在空间，这个空间近�
 ![image](https://github.com/user-attachments/assets/9c022246-b226-44d0-ac83-b662b0990dd6)
 
 
+## GAN生成对抗网络推导
 
 
 
+## Diffusion Model 推导
 
-变种1：CVAE
-变种2：DVAE
-变种3：βVAE
-
-
-
-
+## Diffusion Policy 推导
 
 
