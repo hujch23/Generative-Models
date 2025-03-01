@@ -315,6 +315,15 @@ def simple_conv2d(input_matrix: np.ndarray, kernel: np.ndarray, padding: int, st
 ```
 
 ## RNN手撕及面试
+![image](https://github.com/user-attachments/assets/83395ace-d874-447b-8cb1-2e7f0494f93f)
+![image](https://github.com/user-attachments/assets/9f687b18-034f-4b78-9112-c618e62888d5)
+![image](https://github.com/user-attachments/assets/b3ae7939-2bcb-423e-9c00-7e78cdb1d987)
+![image](https://github.com/user-attachments/assets/0a891299-0747-48cb-892a-2c784141627c)
+![image](https://github.com/user-attachments/assets/5e636d51-d093-4360-9f0b-22d656cf5ca6)
+![image](https://github.com/user-attachments/assets/ea2cc8b0-c47b-4316-a155-dc92cc3a6e8d)
+
+
+
 
 ## Transformer手撕及面试
 - [Transformer1](https://zhuanlan.zhihu.com/p/438625445)  
