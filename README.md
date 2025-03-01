@@ -1,7 +1,6 @@
 # 🧸 Deep Generative Modeling
 
 ## 📚 目录
-
 - [深度学习基础知识](#深度学习必“懂”知识)
 - [深度学习三种架构](#深度学习三种架构)
   - [CNN](#CNN)  
@@ -17,8 +16,6 @@
 
 ###  1.1 Sigmoid 激活函数实现
 ![image](https://github.com/user-attachments/assets/02cf363d-cd7a-4203-8dbb-3833bcc96ff8)
-
-
 ```python 
 import math
 
