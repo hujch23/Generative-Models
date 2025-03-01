@@ -604,8 +604,8 @@ class LayerNorm(nn.Module):
 
 ## VAE变分自编码器推导
 
-- AE:Autoencoder是一种自监督的神经网络，用于学习数据的高效表示。其主要目标是通过压缩数据并尝试重构它来捕捉数据的关键特征由于Autoencoder（自编码器）学习的是恒等函数，当网络的参数数量超过数据本身的复杂度时，存在过拟合的风险。
-- VAE:在VAE中，输入数据被映射到一个潜在的隐向量的分布上，这个分布通常假设为正态分布，其参数由输入数据决定。因此，VAE的关键在于学习输入数据的概率分布特性，而不仅仅是确定性的映射关系。（因为采样的参数和网络参数绑定在一起，因此需要重参数化技巧，通俗点就是神经网络输出近似后验分布的均值和方差）
+- AE：Autoencoder是一种自监督的神经网络，用于学习数据的高效表示。其主要目标是通过压缩数据并尝试重构它来捕捉数据的关键特征由于Autoencoder（自编码器）学习的是恒等函数，当网络的参数数量超过数据本身的复杂度时，存在过拟合的风险。
+- VAE：在VAE中，输入数据被映射到一个潜在的隐向量的分布上，这个分布通常假设为正态分布，其参数由输入数据决定。因此，VAE的关键在于学习输入数据的概率分布特性，而不仅仅是确定性的映射关系。（因为采样的参数和网络参数绑定在一起，因此需要重参数化技巧，通俗点就是神经网络输出近似后验分布的均值和方差）
 - VQ-VAE（Vector Quantized Variational Autoencoder）是一种基于离散潜在空间的生成模型，它结合了变分自动编码器（VAE）和矢量量化（Vector Quantization）的思想。VQ-VAE 的核心目标是用离散的潜在表示来对数据进行建模，同时避免传统 VAE 在潜在空间连续分布上的模糊性问题。停止梯度在 VQ-VAE 中的意义：1. 解决离散操作不可导的问题：离散操作（如矢量量化）通过停止梯度让梯度流仅作用于连续变量，从而实现模型的端到端优化。2. 分离编码器和代码表的优化：停止梯度让编码器的输出 $z_e(x)$ 和代码表的嵌入 $e_k$ 优化过程解耦，使两者能够独立训练，最终收敛到合理的表示。
 ![image](https://github.com/user-attachments/assets/4ba95eea-c9ab-4a89-af81-7793c2d8bca2)
 ![image](https://github.com/user-attachments/assets/e508c84a-27a4-4554-a365-b98fe78d864d)
@@ -613,16 +613,15 @@ class LayerNorm(nn.Module):
 ![image](https://github.com/user-attachments/assets/916f93e3-44a0-4ca3-a019-43395099035f)
 ![image](https://github.com/user-attachments/assets/9c022246-b226-44d0-ac83-b662b0990dd6)
 
-
-
-
 ## GAN生成对抗网络推导
-
-
-
-
+![image](https://github.com/user-attachments/assets/8d384490-5f9c-4ad5-b4c8-f2b5171da1a8)
+![image](https://github.com/user-attachments/assets/5ec9bee4-2e65-404e-81d5-1b2f477c14dc)
+![image](https://github.com/user-attachments/assets/dc3e5455-22ab-4273-96a2-a2a2b2988f10)
+![image](https://github.com/user-attachments/assets/3fe144f3-5199-43aa-9bd9-6216687072bf)
 
 ## Diffusion Model 推导
+
+见论文：Understanding Diffusion Models: A Unified Perspective
 
 ## Diffusion Policy 推导
 
