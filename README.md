@@ -628,6 +628,17 @@ class LayerNorm(nn.Module):
 
 见论文：[Understanding Diffusion Models: A Unified Perspective](https://arxiv.org/abs/2208.11970)
 
+- **《Denoising Diffusion Implicit Models》**：DDIM提出了一种确定性采样方法，通过重新设计扩散过程中的反向更新公式，大幅减少了采样步骤，同时保持生成样本的质量
+![image](https://github.com/user-attachments/assets/5f10226f-6ee6-4a1b-b9a3-15739be45e6d)
+
+- **《High-Resolution Image Synthesis with Latent Diffusion Models》**：Stable Diffusion 是一种基于潜空间扩散模型（Latent Diffusion Models, LDM）的高效生成模型，能够在潜空间中进行扩散过程，从而显著降低计算成本；条件机制通过 Cross-Attention 和 条件嵌入 的结合，将外部条件（如文本描述）与潜空间特征进行交互，指导扩散过程生成符合条件的图像
+  
+- **Scalable Diffusion Models with Transformers**：DIT 是一种用 Transformer 替代传统扩散模型中 U-Net 的新型架构
+![image](https://github.com/user-attachments/assets/942b93cb-1aff-46f7-b2b6-321090a806e3)
+
+
+
+
 ## 📑 Diffusion Policy 推导
 
 
