@@ -439,6 +439,176 @@ class LSTM:
 - [Transformer2](https://zhuanlan.zhihu.com/p/363466672)  
 - [Transformer3](https://zhuanlan.zhihu.com/p/148656446)
 
+```python
+import torch
+import math
+import torch.nn as nn
+
+
+class Embeddings(nn.Module):
+    def __init__(self, d_model, vocab):
+        """
+        :param d_model: 词嵌入的维度
+        :param vocab: 词表的大小
+        """
+        super(Embeddings, self).__init__()
+
+        self.lut = nn.Embedding(vocab, d_model)
+        self.d_model = d_model
+
+    def forward(self, x):
+        x = self.lut(x)
+
+        return x * math.sqrt(self.d_model)
+```
+
+```python
+import torch
+import torch.nn as nn
+import math
+
+
+class PositionalEncoding(nn.Module):
+    def __init__(self, d_model, max_len):
+        super().__init__()
+        # 创建位置编码矩阵
+        pe = torch.zeros(max_len, d_model)
+
+        # 创建位置矩阵
+        position = torch.arange(0, max_len).unsqueeze(1)  # [max_len, 1]
+
+        # 创建除数项
+        div_term = torch.exp(torch.arange(0, d_model, 2) * -math.log(10000) / d_model)
+
+        # 计算位置编码
+        pe[:, 0::2] = torch.sin(position * div_term)
+        pe[:, 1::2] = torch.cos(position * div_term)
+
+        # 添加批次维度并注册为buffer
+        pe = pe.unsqueeze(0)  # [1, max_len, d_model]
+        self.register_buffer('pe', pe)
+
+    def forward(self, x):
+        """
+        参数:
+            x: 输入张量 [batch_size, seq_len, d_model]
+        """
+        x = x + self.pe[:, :x.size(1)]
+        return x
+```
+
+```python
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+class MultiHeadAttention(nn.Module):
+    def __init__(self, d_model, n_head):
+        super(MultiHeadAttention, self).__init__()
+
+        self.d_model = d_model
+        self.n_head = n_head
+        self.head_dim = d_model // n_head
+
+
+        self.wq = nn.Linear(d_model, d_model)
+        self.wk = nn.Linear(d_model, d_model)
+        self.wv = nn.Linear(d_model, d_model)
+
+        self.out_linear = nn.Linear(d_model, d_model)
+
+    def forward(self, query, key, value, mask=None):
+
+        batch_size, seq_length = query.size(0), query.size(1)
+
+        Q = self.wq(query)
+        K = self.wk(key)
+        V = self.wv(value)
+
+        Q = Q.view(batch_size, seq_length, self.n_head, self.head_dim).transpose(1, 2)
+        K = K.view(batch_size, seq_length, self.n_head, self.head_dim).transpose(1, 2)
+        V = V.view(batch_size, seq_length, self.n_head, self.head_dim).transpose(1, 2)
+
+        scores = torch.matmul(Q, K.transpose(-2, -1)) / (self.head_dim ** 0.5)
+
+        if mask is not None:
+            mask = mask.unsqueeze(1)
+            mask = mask.bool()
+            scores = scores.masked_fill(~mask, float('-inf'))
+
+        attention_weight = F.softmax(scores, dim = -1)
+
+        att_out = torch.matmul(attention_weight, V)
+        att_out = att_out.transpose(1, 2).contiguous()
+        att_out = att_out.view(batch_size, seq_length, self.d_model)
+
+        output = self.out_linear(att_out)
+
+        return output
+if __name__ == "__main__":
+    d_model = 512
+    n_head = 8
+    batch_size = 16
+    seq_length = 32
+    attention = MultiHeadAttention(d_model, n_head)
+    query = torch.rand(batch_size, seq_length, d_model)
+    key = torch.rand(batch_size, seq_length, d_model)
+    value = torch.rand(batch_size, seq_length, d_model)
+    output = attention(query, key, value)
+    print("输入形状:", query.shape)
+    print("输出形状:", output.shape)
+```
+
+```python
+import torch
+import torch.nn as nn
+
+class FeedForward(nn.Module):
+    def __init__(self, d_model, hidden_dim, dropout = 0.1):
+        super(FeedForward, self).__init__()
+        self.d_model = d_model
+        self.hidden_dim = hidden_dim
+
+        self.fc1 = nn.Linear(self.d_model, self.hidden_dim)
+        self.fc2 = nn.Linear(self.hidden_dim, self.d_model)
+        self.dropout = nn.Dropout(dropout)
+
+        self.relu = nn.ReLU()
+
+    def forward(self, x):
+        x = self.fc1(x)
+        x = self.relu(x)
+        x = self.dropout(x)
+        x = self.fc2(x)
+
+
+        return x
+
+```
+
+```python
+import torch
+import torch.nn as nn
+
+class LayerNorm(nn.Module):
+    def __init__(self, d_model, eps = 1e-12):
+        super(LayerNorm, self).__init__()
+        self.gamma = nn.Parameter(torch.ones(d_model))
+        self.beta = nn.Parameter(torch.ones(d_model))
+        self.eps = eps
+
+    def forward(self, x):
+        mean = x.mean(-1, keepdim = True)
+        var = x.var(-1, unbiased = False, keepdim = True)
+        out = (x - mean) / torch.sqrt(var + self.eps)
+        out = self.gamma * out + self.beta
+        return out
+```
+
+
+
+
+
+
 
 
 ## VAE变分自编码器推导
