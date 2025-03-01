@@ -1,4 +1,4 @@
-# 🧸 Generative-Models
+# 🧸 Deep Generative Modeling
 
 ## 📚 目录
 
