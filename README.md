@@ -160,6 +160,7 @@ if __name__ == "__main__":
 ![image](https://github.com/user-attachments/assets/407066ad-2417-4b42-9bd2-fab20df13679)
 
 ![image](https://github.com/user-attachments/assets/47c379dc-f7bf-44de-9fb2-7c222a95cded)
+![image](https://github.com/user-attachments/assets/fbc68f38-79c2-4b41-9e35-bb596b01dfdb)
 
 ```python
 import numpy as np
