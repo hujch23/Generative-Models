@@ -622,6 +622,13 @@ class LayerNorm(nn.Module):
 ![image](https://github.com/user-attachments/assets/dc3e5455-22ab-4273-96a2-a2a2b2988f10)
 ![image](https://github.com/user-attachments/assets/3fe144f3-5199-43aa-9bd9-6216687072bf)
 
+## 模式崩塌（生成模型只能生成有限的样本模式，而无法覆盖训练数据的全部分布）
+![image](https://github.com/user-attachments/assets/8687d8cc-9181-45d6-b86e-49516d2b8c06)
+
+![image](https://github.com/user-attachments/assets/ae2edbdc-2b4a-41a0-907f-06bf63f43f89)
+![image](https://github.com/user-attachments/assets/4b799ecc-d319-45e1-9d63-82ea6cdd0dc6)
+
+
 ## 🔬 Diffusion Model 推导
 
 见论文：[Understanding Diffusion Models: A Unified Perspective](https://arxiv.org/abs/2208.11970)
