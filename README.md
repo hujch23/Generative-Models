@@ -13,6 +13,8 @@
   - [Autoregressive](#Autoregressive)
 - [Sora技术原理](#Sora技术原理)
 
+变分自编码器（VAE）可以被理解为通过首先将信息压缩到信息瓶颈中，然后预测自身的输入。生成对抗网络（GAN）可以被理解为预测所给输入是来自真实图像（数据点）还是伪造（自生成）的图像。噪声对比估计可以被视为在潜在空间中预测一个输入片段的嵌入在空间和/或时间上是接近还是遥远
+
 
 ###  1.1 Sigmoid 激活函数实现
 ![image](https://github.com/user-attachments/assets/02cf363d-cd7a-4203-8dbb-3833bcc96ff8)
